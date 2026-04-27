@@ -4,7 +4,82 @@
 <title>TCGKURDISH</title><style>
 body {
   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, s<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TCGKURDISH</title><style>
+body {
+  margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #000);
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 30px 10px;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, red, white, green);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* GRID */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  padding: 25px;
+}
+
+/* CARD */
+.card {
+  background: rgba(20,20,20,0.8);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 12px;
+  text-align: center;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.price {
+  color: #00ffcc;
+  font-weight: bold;
+}
+</style></head><body><header>TCGKURDISH</header><div class="container">  <div class="card">
+    <img src="images/binder1.jpg">
+    <div class="card-content">
+      <div class="title">Binder</div>
+      <div class="price">$25</div>
+    </div>
+  </div>  <div class="card">
+    <img src="images/card1.jpg">
+    <div class="card-content">
+      <div class="title">Rare Card</div>
+      <div class="price">$50</div>
+    </div>
+  </div></div></body>
+</html>ans-serif;
   background: radial-gradient(circle at top, #0f172a, #000);
   color: white;
   overflow-x: hidden;
