@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCGKURDISH</title>  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      color: white;
+    }
+
+    header { text-align: center; padding: 30px 20px 10px; }
+
+    header h1 {
+      font-size: 40px;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #38bdf8, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p { margin-top: 8px; color: #cbd5f5; }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #1e293b;
+      cursor: pointer;
+    }
+
+    .tab.active { background: #38bdf8; color: black; }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(30,41,59,0.6);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 0 20px #38bdf8;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content { padding: 15px; }
+
+    .card-title { font-size: 18px; font-weight: 600; }
+    .card-desc { font-size: 14px; color: #cbd5f5; }
+
+    /* Modal Gallery */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 70%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .gallery-controls {
+      display: flex;
+      gap: 15px;
+    }
+
+    .gallery-controls button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      cursor: pointer;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      padding: 14px 16px;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+  </style></head>
+<body><header>
+  <h1>TCGKURDISH</h1>
+  <p>Trading Card Game Products • Kurdistan</p>
+</header><div class="tabs">
+  <div class="tab" onclick="filter('all')">All</div>
+  <div class="tab" onclick="filter('binder')">Binder</div>
+  <div class="tab" onclick="filter('pack')">Pack</div>
+  <div class="tab" onclick="filter('box')">Box</div>
+</div><section class="container">  <div class="card binder" onclick="openGallery(['img1.jpg','img2.jpg','img3.jpg'])">
+    <img src="img1.jpg">
+    <div class="card-content">
+      <div class="card-title">Card Binder</div>
+      <div class="card-desc">Premium binders to protect your collection.</div>
+    </div>
+  </div>  <div class="card pack" onclick="openGallery(['pack1.jpg','pack2.jpg'])">
+    <img src="pack1.jpg">
+    <div class="card-content">
+      <div class="card-title">Booster Pack</div>
+      <div class="card-desc">Random exciting pulls.</div>
+    </div>
+  </div>  <div class="card box" onclick="openGallery(['box1.jpg','box2.jpg','box3.jpg'])">
+    <img src="box1.jpg">
+    <div class="card-content">
+      <div class="card-title">Booster Box</div>
+      <div class="card-desc">Full boxes for collectors.</div>
+    </div>
+  </div></section><!-- Modal Gallery --><div class="modal" id="modal">
+  <img id="modalImg">
+  <div class="gallery-controls">
+    <button onclick="prevImg()">⬅</button>
+    <button onclick="nextImg()">➡</button>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div><a href="https://wa.me/" class="whatsapp-float">💬</a>
+
+<script>
+  let images = [];
+  let index = 0;
+
+  function openGallery(imgArray) {
+    images = imgArray;
+    index = 0;
+    document.getElementById('modal').style.display = 'flex';
+    showImg();
+  }
+
+  function showImg() {
+    document.getElementById('modalImg').src = images[index];
+  }
+
+  function nextImg() {
+    index = (index + 1) % images.length;
+    showImg();
+  }
+
+  function prevImg() {
+    index = (index - 1 + images.length) % images.length;
+    showImg();
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  function filter(type) {
+    let cards = document.querySelectorAll('.card');
+    cards.forEach(c => {
+      c.style.display = (type === 'all' || c.classList.contains(type)) ? 'block' : 'none';
+    });
+  }
+</script></body>
+</html>
